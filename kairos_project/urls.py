@@ -4,6 +4,6 @@ from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio_sesion/', include('usuarios.urls')),
+    path('usuarios/', include('usuarios.urls')),  # Asegúrate de que esta línea incluye los URLs de la app usuarios
     path('', lambda request: redirect('inicio_sesion')),  # Redirigir la ruta principal
 ]

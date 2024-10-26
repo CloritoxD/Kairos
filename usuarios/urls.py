@@ -1,7 +1,8 @@
 from django.urls import path
-from . import views
+from .views import register_view, inicio_sesion, navegando
 
 urlpatterns = [
-    path('inicio_sesion/', views.inicio_sesion, name='inicio_sesion'),
-    path('navegando/', views.navegando, name='navegando'),
+    path('registro/', register_view, name='register'),  # URL para el registro
+    path('inicio_sesion/', inicio_sesion, name='inicio_sesion'),
+    path('navegando/', navegando, name='navegando'),
 ]
