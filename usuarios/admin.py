@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Usuario  # Asegúrate de que esta línea sea correcta
+from .models import User  # Asegúrate de que esta línea sea correcta
 
-@admin.register(Usuario)
+@admin.register(User)
 class UsuarioAdmin(admin.ModelAdmin):
-    list_display = ('nombre_usuario',)
+    list_display = ('username',)

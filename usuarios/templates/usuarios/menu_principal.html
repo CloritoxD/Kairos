@@ -1,0 +1,55 @@
+<!-- accounts/templates/accounts/menu_principal.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Color de fondo de la página */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Alineación vertical */
+            height: 100vh; /* Altura completa de la vista */
+        }
+
+        h1 {
+            color: #333; /* Color del título */
+            margin-bottom: 20px; /* Espacio debajo del título */
+        }
+
+        p {
+            font-size: 18px; /* Tamaño de fuente para el párrafo */
+            color: #555; /* Color del texto del párrafo */
+            margin-bottom: 30px; /* Espacio debajo del párrafo */
+        }
+
+        a {
+            text-decoration: none; /* Sin subrayado */
+            color: white; /* Color del enlace */
+            background-color: #007BFF; /* Color del botón */
+            padding: 10px 15px; /* Espaciado del botón */
+            border-radius: 5px; /* Bordes redondeados */
+            transition: background-color 0.3s; /* Transición suave para el color de fondo */
+            margin: 10px 0; /* Margen vertical entre los enlaces */
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Color del botón al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+
+<h1>{{ message }}</h1>
+<p>Bienvenido al sistema PQR</p>
+<a href="{% url 'logout' %}">Cerrar sesión</a>
+<a href="{% url 'navegando' %}">Navega</a>
+
+</body>
+</html>
