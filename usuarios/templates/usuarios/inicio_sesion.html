@@ -74,7 +74,7 @@
 
         .btn:hover {
             background-color: #218838; /* Color del botón de registro al pasar el ratón */
-        }
+        }/* ... (mantener los estilos existentes) ... */
     </style>
 </head>
 <body>
@@ -83,14 +83,21 @@
     <h2>Iniciar Sesión</h2>
     <form method="POST">
         {% csrf_token %}
-        <label for="username">Usuario:</label>
-        <input type="text" id="username" name="username"><br><br> <!-- Asegúrate de que `name="username"` -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password"><br><br> <!-- Asegúrate de que `name="password"` -->
+        <input type="password" id="password" name="password" required><br><br>
         <button type="submit">Iniciar sesión</button>
     </form>
 
-    <!-- Botón para redirigir al registro -->
+    {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
     <a href="{% url 'register' %}" class="btn">Registro</a>
 </div>
 
