@@ -6,75 +6,126 @@
     <title>Iniciar Sesión</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4; /* Color de fondo de la página */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Altura completa de la vista */
+            height: 100vh;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .login-container {
-            background-color: white; /* Fondo del formulario */
-            padding: 20px;
-            border-radius: 8px; /* Bordes redondeados */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
-            width: 300px; /* Ancho fijo del formulario */
-            text-align: center; /* Centra el texto */
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            text-align: center;
+            transform: translateY(-20px);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h2 {
-            margin-bottom: 20px; /* Espacio debajo del título */
-            color: #333; /* Color del título */
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
         }
 
         label {
-            display: block; /* Asegura que cada etiqueta esté en una nueva línea */
-            margin-bottom: 5px; /* Espacio debajo de la etiqueta */
-            color: #555; /* Color de las etiquetas */
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
         }
 
-        input[type="text"],
-        input[type="password"] {
-            width: 100%; /* Ancho completo */
-            padding: 10px; /* Espaciado interno */
-            margin-bottom: 15px; /* Espacio entre campos */
-            border: 1px solid #ccc; /* Borde del campo */
-            border-radius: 4px; /* Bordes redondeados */
-            box-sizing: border-box; /* Incluye el padding en el tamaño total */
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+            outline: none;
         }
 
         button {
-            width: 100%; /* Ancho completo */
-            padding: 10px;
-            background-color: #007BFF; /* Color del botón */
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
             color: white;
-            border: none; /* Sin borde */
-            border-radius: 5px; /* Bordes redondeados */
-            cursor: pointer; /* Cambia el cursor al pasar el ratón */
-            font-size: 16px; /* Tamaño de la fuente */
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
         }
 
         button:hover {
-            background-color: #0056b3; /* Color del botón al pasar el ratón */
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .btn {
             display: inline-block;
-            margin-top: 10px;
-            padding: 10px 15px;
-            background-color: #28a745; /* Color del botón de registro */
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #28a745;
             color: white;
-            text-decoration: none; /* Sin subrayado */
-            border-radius: 5px; /* Bordes redondeados */
-            margin-top: 15px; /* Espacio encima del botón */
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
         }
 
         .btn:hover {
-            background-color: #218838; /* Color del botón de registro al pasar el ratón */
-        }/* ... (mantener los estilos existentes) ... */
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .messages li {
+            color: #dc3545;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(220, 53, 69, 0.1);
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
