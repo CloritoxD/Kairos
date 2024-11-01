@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Garantía</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .garantia-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .producto-info {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            padding : 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .btn-enviar {
+            display: inline-block;
+            background: #000;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-enviar:hover {
+            background: #d4af37;
+        }
+    </style>
+</head>
+<body>
+    <div class="garantia-container">
+        <h2>Solicitar Garantía para {{ producto.nombre }}</h2>
+        <div class="producto-info">
+            <p>Nombre: {{ producto.nombre }}</p>
+            <p>Precio: €{{ producto.precio }}</p>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <textarea name="problema" placeholder="Describe el problema con el producto"></textarea>
+            <button type="submit" class="btn-enviar">Enviar Solicitud</button>
+        </form>
+    </div>
+</body>
+</html>
