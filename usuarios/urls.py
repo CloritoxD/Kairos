@@ -7,4 +7,6 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'), 
     path('navegando/', views.navegando, name='navegando'),
     path('menu_principal/',views.menuprincipal, name='menu_principal'),
+    path('productos/', views.productos, name='productos'),
+    path('solicitar-garantia/<int:producto_id>/', views.solicitar_garantia, name='solicitar_garantia'),
 ]

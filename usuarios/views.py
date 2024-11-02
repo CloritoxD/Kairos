@@ -1,7 +1,10 @@
 from django.contrib.auth.models import User
-from django.contrib.auth import login, logout, authenticate  # Asegúrate de que 'logout' esté aquí
-from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout, authenticate
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from .models import Producto, SolicitudGarantia
+import random
+import string
 
 def registro(request):
     if request.method == 'POST':
@@ -74,9 +77,69 @@ def navegando(request):
     return render(request, 'usuarios/navegando.html')
 
 def menuprincipal(request):
-    return render(request, 'usuarios/menu_principal.html')
+    if not request.user.is_authenticated:
+        return redirect('inicio_sesion')
+    
+    # Añade algunos productos de ejemplo si no existen
+    if Producto.objects.count() == 0:
+        productos_ejemplo = [
+            {
+                'nombre': 'Rolex Submariner',
+                'descripcion': 'Reloj de lujo resistente al agua',
+                'precio': 10000.00,
+                'imagen': 'https://ejemplo.com/rolex.jpg'
+            },
+            {
+                'nombre': 'Omega Speedmaster',
+                'descripcion': 'Reloj deportivo profesional',
+                'precio': 8000.00,
+                'imagen': 'https://ejemplo.com/omega.jpg'
+            },
+            # Añade más productos si lo deseas
+        ]
+        
+        for producto in productos_ejemplo:
+            Producto.objects.create(**producto)
+    
+    productos = Producto.objects.all()
+    context = {
+        'message': f'Bienvenido, {request.user.username}',
+        'productos': productos
+    }
+    return render(request, 'usuarios/menu_principal.html', context)
 
 def logout_view(request):
     logout(request)  # Cierra la sesión del usuario
     messages.success(request, 'Has cerrado sesión exitosamente.')
     return redirect('inicio_sesion')  # Redirige a la página de inicio de sesión o a donde desees
+def generar_codigo_seguimiento():
+    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
+
+def menuprincipal(request):
+    productos = Producto.objects.all()
+    return render(request, 'usuarios/menu_principal.html', {'productos': productos})
+
+def productos(request):
+    productos = Producto.objects.all()
+    return render(request, 'usuarios/productos.html', {'productos': productos})
+
+def solicitar_garantia(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    
+    if request.method == 'POST':
+        if producto.esta_en_garantia():
+            problema = request.POST.get('problema')
+            codigo = generar_codigo_seguimiento()
+            
+            solicitud = SolicitudGarantia.objects.create(
+                usuario=request.user,
+                producto=producto,
+                problema=problema,
+                codigo_seguimiento=codigo
+            )
+            messages.success(request, f'Solicitud de garantía registrada. Código de seguimiento: {codigo}')
+            return redirect('menu_principal')
+        else:
+            messages.error(request, 'Este producto ya no está en garantía.')
+    
+    return render(request, 'usuarios/solicitar_garantia.html', {'producto': producto})

@@ -7,3 +7,25 @@ class User(models.Model):
     
     def __str__(self):
         return self.username
+
+# Nuevo modelo para Productos
+class Producto(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    imagen = models.URLField()
+    fecha_compra = models.DateField(auto_now_add=True)
+    periodo_garantia = models.IntegerField(default=365)
+    
+    def esta_en_garantia(self):
+        from datetime import datetime
+        dias_desde_compra = (datetime.now().date() - self.fecha_compra).days
+        return dias_desde_compra <= self.periodo_garantia
+
+# Nuevo modelo para Solicitudes de Garantía
+class SolicitudGarantia(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    problema = models.TextField()
+    fecha_solicitud = models.DateTimeField(auto_now_add=True)
+    codigo_seguimiento = models.CharField(max_length=8, unique=True)
