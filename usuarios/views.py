@@ -5,6 +5,22 @@ from django.contrib import messages
 from .models import Producto, SolicitudGarantia
 import random
 import string
+from .models import Solicitud
+
+#-------------------------------
+# Carlos Puso esto
+def pqr_home(request):
+    return render(request, 'pqr_door/pqr_home.html')
+
+def crear_solicitud(request, tipo):
+    if request.method == 'POST':
+        descripcion = request.POST.get('descripcion')
+        Solicitud.objects.create(tipo=tipo, descripcion=descripcion)
+        return redirect('pqr_home')
+    return render(request, 'pqr_door/crear_solicitud.html', {'tipo': tipo})
+#-------------------------------
+
+
 
 def registro(request):
     if request.method == 'POST':

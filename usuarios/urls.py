@@ -9,4 +9,6 @@ urlpatterns = [
     path('menu_principal/',views.menuprincipal, name='menu_principal'),
     path('productos/', views.productos, name='productos'),
     path('solicitar-garantia/<int:producto_id>/', views.solicitar_garantia, name='solicitar_garantia'),
+    path('menupqr', views.pqr_home, name='pqr_home'),
+    path('crear/<str:tipo>/', views.crear_solicitud, name='crear_solicitud'),
 ]
