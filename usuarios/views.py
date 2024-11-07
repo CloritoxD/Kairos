@@ -10,14 +10,14 @@ from .models import Solicitud
 #-------------------------------
 # Carlos Puso esto
 def pqr_home(request):
-    return render(request, 'pqr_door/pqr_home.html')
+    return render(request, 'usuarios/pqr_home.html')
 
 def crear_solicitud(request, tipo):
     if request.method == 'POST':
         descripcion = request.POST.get('descripcion')
         Solicitud.objects.create(tipo=tipo, descripcion=descripcion)
         return redirect('pqr_home')
-    return render(request, 'pqr_door/crear_solicitud.html', {'tipo': tipo})
+    return render(request, 'usuarios/crear_solicitud.html', {'tipo': tipo})
 #-------------------------------
 
 
