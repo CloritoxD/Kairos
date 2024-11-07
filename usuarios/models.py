@@ -1,5 +1,20 @@
 from django.db import models
 
+#----------------------------------------------
+# Carlos puso esto
+class Solicitud(models.Model):
+    TIPOS = [
+        ('P', 'Petición'),
+        ('R', 'Reclamo'),
+        ('Q', 'Queja'),
+    ]
+    tipo = models.CharField(max_length=1, choices=TIPOS)
+    descripcion = models.TextField()
+
+    def __str__(self):
+        return f"{self.get_tipo_display()}"
+#----------------------------------------------
+
 class User(models.Model):
     username = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=50)

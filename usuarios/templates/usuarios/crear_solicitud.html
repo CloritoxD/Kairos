@@ -1,0 +1,17 @@
+<!-- pqr/templates/pqr/crear_solicitud.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Solicitud</title>
+</head>
+<body>
+    <h1>Crear {{ tipo }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="descripcion" placeholder="Describe tu solicitud"></textarea><br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

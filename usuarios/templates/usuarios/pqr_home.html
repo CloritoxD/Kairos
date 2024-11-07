@@ -1,0 +1,63 @@
+<!-- pqr/templates/pqr/pqr_home.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PQR Kairos</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+        .container {
+            background-color: #d32f2f;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 8px;
+        }
+        .button {
+            background-color: #fff;
+            color: #d32f2f;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .section {
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PQR Kairos</h1>
+        <img src="logo.png" alt="Kairos Logo" style="width:100px;"><br>
+
+        <div class="section">
+            <h2>Peticiones</h2>
+            <p>Solicitud formal que un cliente hace a una empresa para obtener información, servicios, o productos adicionales.</p>
+            <a href="{% url 'crear_solicitud' 'P' %}" class="button">Crear Petición</a>
+        </div>
+
+        <div class="section">
+            <h2>Reclamos</h2>
+            <p>Demanda que un cliente presenta ante una empresa para exigir la corrección de un problema...</p>
+            <a href="{% url 'crear_solicitud' 'R' %}" class="button">Crear Reclamo</a>
+        </div>
+
+        <div class="section">
+            <h2>Quejas</h2>
+            <p>Expresión de insatisfacción por parte del cliente debido a un problema o defecto en un producto...</p>
+            <a href="{% url 'crear_solicitud' 'Q' %}" class="button">Crear Queja</a>
+        </div>
+    </div>
+</body>
+</html>
