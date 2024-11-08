@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Queja</title>
+    <link rel="stylesheet" href="{% static 'usuarios/styles.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .form-container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        .form-container:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            color: #c00; /* Rojo */
+            transition: color 0.3s ease;
+        }
+        header h1:hover {
+            color: #a00; /* Rojo oscuro */
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            border-color: #c00; /* Rojo */
+            box-shadow: 0 0 5px rgba(192, 0, 0, 0.5);
+        }
+        button {
+            background-color: #c00; /* Rojo */
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #a00; /* Rojo oscuro */
+            transform: translateY(-2px);
+        }
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        p {
+            color: #555; /* Gris oscuro */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <header>
+            <h1>Formulario de Queja</h1>
+            <p>Número de queja: 121313</p>
+        </header>
+        
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <section>
+                <h2>Datos del Cliente</h2>
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+                
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+            </section>
+            <section>
+                <h2>Información del Producto/Servicio</h2>
+                <label for="numero_serie">Número de Serie:</label>
+                <input type="text" id="numero_serie" name="numero_serie" required>
+                
+                <label for="fecha_compra">Fecha de Compra:</label>
+                <input type="date" id="fecha_compra" name="fecha_compra" required>
+                
+                <label for="factura">Factura/Recibo de Compra:</label>
+                <input type="file" id="factura" name="factura" accept=".pdf" required>
+            </section>
+            <section>
+                <h2>Detalles de la Queja</h2>
+                <label>¿Has contactado previamente al servicio de atención al cliente?</label>
+                <label>
+                    <input type="checkbox" name="contacto" value="si"> Sí
+                </label>
+                <label>
+                    <input type="checkbox" name="contacto" value="no"> No
+                </label>
+                
+                <label for="descripcion">Descripción de la Queja:</label>
+                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+            </section>
+            <section>
+                <h2>Declaración del Solicitante</h2>
+                <p>Confirmo que toda la información proporcionada es correcta y completa, y solicito una pronta respuesta a mi petición.</p>
+                <label>
+                    <input type="radio" name="confirmacion" value="si" required> Sí
+                </label>
+                <label>
+                    <input type="radio" name="confirmacion" value="no" required> No
+                </label>
+            </section>
+                <section>
+                    <h2>Adjuntar Archivos (opcional)</h2>
+                    <label for="archivo">Seleccionar archivo:</label>
+                    <input type="file" id="archivo" name="archivo">
+                </section>
+
+            <button type="submit">Enviar Queja</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -22,8 +22,13 @@ def crear_solicitud(request, tipo):
 
 def formulario_reclamo(request, tipo):
     # Your view logic here
-    return render(request, 'usuarios/formulario.html', {'tipo': tipo})
-
+    return render(request, 'usuarios/formulario_reclamo.html', {'tipo': tipo})
+def formulario_queja(request, tipo):
+    # Your view logic here
+    return render(request, 'usuarios/formulario_queja.html', {'tipo': tipo})
+def formulario_peticion(request, tipo):
+    # Your view logic here
+    return render(request, 'usuarios/formulario_peticion.html', {'tipo': tipo})
 #-------------------------------
 
 def registro(request):

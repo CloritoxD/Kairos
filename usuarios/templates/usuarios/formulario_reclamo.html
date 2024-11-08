@@ -6,6 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Reclamo</title>
     <link rel="stylesheet" href="{% static 'usuarios/styles.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .form-container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        .form-container:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            color: #c00; /* Rojo */
+            transition: color 0.3s ease;
+        }
+        header h1:hover {
+            color: #a00; /* Rojo oscuro */
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            border-color: #c00; /* Rojo */
+            box-shadow: 0 0 5px rgba(192, 0, 0, 0.5);
+        }
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #c00; /* Rojo */
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #a00; /* Rojo oscuro */
+            transform: translateY(-2px);
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        p {
+            color: #555; /* Gris oscuro */
+        }
+    </style>
 </head>
 <body>
     <div class="form-container">
@@ -41,7 +119,7 @@
             </section>
 
             <section>
-                <h2>Detalles del Reclamo</h2>
+                <h2>Detalles del Recl amo</h2>
                 <label for="motivo">Motivo del Reclamo:</label>
                 <input type="text" id="motivo" name="motivo" required>
                 

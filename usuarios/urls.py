@@ -13,5 +13,6 @@ urlpatterns = [
     path('crear/<str:tipo>/', views.crear_solicitud, name='crear_solicitud'),
  # formulario_reclamo
     path('formulario_reclamo/<str:tipo>/', views.formulario_reclamo, name='formulario_reclamo'),
-
+    path('formulario_peticion/<str:tipo>/', views.formulario_peticion, name='formulario_peticion'),
+    path('formulario_queja/<str:tipo>/', views.formulario_queja, name='formulario_queja'),
 ]
