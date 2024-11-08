@@ -11,4 +11,7 @@ urlpatterns = [
  #  path('solicitar-garantia/<int:producto_id>/', views.solicitar_garantia, name='solicitar_garantia'),
     path('menupqr', views.pqr_home, name='pqr_home'),
     path('crear/<str:tipo>/', views.crear_solicitud, name='crear_solicitud'),
+ # formulario_reclamo
+    path('formulario_reclamo/', views.formulario_reclamo, name='formulario_reclamo'),
+
 ]

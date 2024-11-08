@@ -20,7 +20,10 @@ def crear_solicitud(request, tipo):
     return render(request, 'usuarios/crear_solicitud.html', {'tipo': tipo})
 #-------------------------------
 
+def formulario_reclamo(request):
+    return render(request, 'reclamo/formulario.html')
 
+#-------------------------------
 
 def registro(request):
     if request.method == 'POST':
