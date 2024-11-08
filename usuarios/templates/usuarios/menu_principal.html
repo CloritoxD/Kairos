@@ -127,8 +127,8 @@
                     <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}">
                     <h3>{{ producto.nombre }}</h3>
                     <p>{{ producto.descripcion }}</p>
-                    <div class="precio">€{{ producto.precio }}</div>
-                    <a href="{% url 'pqr_home' %}" class="btn-garantia">Solicitar Garantía</a>
+                    <div class="precio">${{ producto.precio }}</div>
+                    <a href="{% url 'solicitar_garantia' producto.id %}" class="btn-garantia">Solicitar Garantía</a>
                 </div>
             {% endfor %}
         {% else %}
@@ -138,11 +138,9 @@
 
     <div class="nav-links">
         <a href="{% url 'logout' %}">Cerrar sesión</a>
-        <a href="{% url 'navegando' %}">Navega</a>
+        <a href=https://relojeskairos.com>Navega</a>
         <a href="{% url 'pqr_home' %}">pqr</a>
     </div>
-
-    
 
     {% if messages %}
         <ul class="messages">

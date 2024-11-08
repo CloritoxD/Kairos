@@ -20,8 +20,9 @@ def crear_solicitud(request, tipo):
     return render(request, 'usuarios/crear_solicitud.html', {'tipo': tipo})
 #-------------------------------
 
-def formulario_reclamo(request):
-    return render(request, 'reclamo/formulario.html')
+def formulario_reclamo(request, tipo):
+    # Your view logic here
+    return render(request, 'usuarios/formulario.html', {'tipo': tipo})
 
 #-------------------------------
 

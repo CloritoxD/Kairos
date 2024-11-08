@@ -27,7 +27,7 @@ class User(models.Model):
 class Producto(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    precio = models.DecimalField(max_digits=100, decimal_places=2)
     imagen = models.URLField()
     fecha_compra = models.DateField(auto_now_add=True)
     periodo_garantia = models.IntegerField(default=365)
